@@ -1,7 +1,13 @@
 cmake_minimum_required(VERSION 3.0)
+set(project_name sdl_hello_render)
+project(${project_name})
 
-project(sdl_hello_render)
+add_executable(${project_name} main.cpp)
 
-add_executable(sdl_hello_render main.cpp)
+target_link_libraries( ${project_name} SDL2 )
 
-install(TARGETS sdl_hello_render RUNTIME DESTINATION bin)
+add_custom_target(copy_res_directory ALL
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+        "${CMAKE_SOURCE_DIR}/res" "${CMAKE_BINARY_DIR}/res"
+    COMMENT "Copy res directory to build tree"
+    VERBATIM)
