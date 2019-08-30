@@ -45,12 +45,31 @@ int main( int argc, char* args[] )
         }
         else
         {
-            //Aply the image
-            SDL_BlitSurface( gHellowWorld, nullptr, gScreenSurface, nullptr );
-            SDL_UpdateWindowSurface(gWindow);
+            // Main loop
+            bool quit = false;
             
-            //Wait two seconds
-            SDL_Delay(2000);
+            // Event handler
+            SDL_Event e;
+            
+            while( !quit )
+            {
+                while( SDL_PollEvent(&e) != 0 )
+                {
+                    switch( e.type )
+                    {
+                        case SDL_QUIT:
+                            quit = true;
+                            break;
+                        default:
+                            printf("other action %u\n", e.type);
+                            break;
+                    }
+                }
+            
+                //Aply the image
+                SDL_BlitSurface( gHellowWorld, nullptr, gScreenSurface, nullptr );
+                SDL_UpdateWindowSurface(gWindow);
+            }
         }
     }
     
