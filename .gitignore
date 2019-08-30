@@ -1,0 +1,9 @@
+# Build directories
+build/*
+
+# Project files
+.kdev4/*
+
+# Vim tmp files
+*.swp
+*.swo
