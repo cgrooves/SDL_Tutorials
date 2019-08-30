@@ -3,6 +3,7 @@ build/*
 
 # Project files
 .kdev4/*
+*.kdev4
 
 # Vim tmp files
 *.swp
